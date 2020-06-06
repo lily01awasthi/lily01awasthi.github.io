@@ -23,11 +23,14 @@
             href="https://twitter.com/LiliawasthiLily?ref_src=twsrc%5Etfw">Tweets by LiliawasthiLily</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
+    <div id='repos'>
+    </div>
     <script>
+        var count = 0;
         fetch("https://api.github.com/users/lily01awasthi")
             .then(response => response.json())
             .then(function (data) {
-                console.log(data)
+                //console.log(data)
                 document.getElementById('profile_img').src = data['avatar_url']
                 document.getElementById('full_name').textContent = data['name']
                 document.getElementById('bio').textContent = data['bio']
@@ -35,6 +38,19 @@
                 document.getElementById('main_container').hidden = false
                 document.getElementById('loading').hidden = true
 
+            })
+        fetch("https://api.github.com/users/lily01awasthi/repos")
+            .then(response => response.json())
+            .then(function (result) {
+                result.forEach(element => {
+                    console.log(element['svn_url'])
+                    // var target = document.getElementById("repos");
+                    // var div = document.createElement("div");
+                    // div.innerText = element['name'];
+                    // div.href = element['svn_url'];
+                    // div.classList.add("div-added");
+                    // target.append(div);
+                });
             })
     </script>
 </body>
