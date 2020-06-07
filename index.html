@@ -9,6 +9,25 @@
         .main {
             text-align: center;
         }
+
+        #repos {
+            /* background-color: aqua; */
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* flex-grow: 3; */
+
+        }
+
+
+        #repos>div {
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -46,7 +65,9 @@
                     console.log(element['name'])
                     var target = document.getElementById("repos");
                     var div = document.createElement("div");
-                    div.innerText = element['name'];
+                    div.innerHTML += "<br>" + element['name'] + "<br>" + "<a href='" + element['svn_url'] + "'>visit repo here</a>";
+                    // div.innerText = element['name'];
+                    // div.innerHTML.href = element['svn_url'];
                     // div.href = element['svn_url'];
                     div.classList.add("div-added");
                     target.append(div);
