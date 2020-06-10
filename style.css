@@ -1,0 +1,78 @@
+
+body {
+    /* background-image: linear-gradient(to left, white 25%, gray); */
+    /* font-family: "Comic Sans MS", cursive, sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    ;
+}
+
+.heading{
+    border-bottom: 15px solid rosybrown;
+    /* padding:50px; */
+    margin:20px;
+    border-radius:10px;
+    position:relative;
+    top: 0px;
+    left:0px;
+    z-index: -1;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    
+}
+.main {
+    margin:20px;
+    /* position:relative; */
+    display: inline-block;
+    text-align: center;
+    top: 5px;
+    left:0px;
+    z-index: -1;
+    width: 40%;
+    /* border: solid black 2px; */
+
+}
+
+#repos {
+    margin:20px;
+    text-align: center;
+    display: inline-block;
+    top: 5px;
+    left:0px;
+    /* z-index: -1; */
+    width: 40%;
+    /* border: solid black 2px; */
+    /* background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    word-wrap: break-word; */
+
+
+}
+
+#profile_img {
+    filter: grayscale(100%);
+    border-radius: 50%;
+
+    /* background-image: radial-gradient(white,grey,blue); */
+    width: 200px;
+    height: 200px;
+}
+
+
+
+
+
+#repos>div {
+    width: 125px;
+    height: 125px;
+    margin-top: 20px;
+    border: 2px solid blue;
+    color: antiquewhite;
+    background-color: grey;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 2px;
+    display: inline-block;
+}
