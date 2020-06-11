@@ -4,26 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Profile</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div id="loading">loading...</div>
-    <div class="heading">
-        <h2 id="full_name"></h2>
+    <div class="containter">
+        <div class="heading">
+            <div id="loading">loading...</div>
+            <h2 id="full_name"></h2>
+        </div>
+        <div class="main" id="main_container" hidden="true">
+            <img id="profile_img" height="100" width="100" alt="profile">
+            <p id="bio"></p>
+            <p>Check me on <a id="githublink">Github</a></p>
+            <a class="twitter-timeline" data-width="300" data-height="400"
+                href="https://twitter.com/LiliawasthiLily?ref_src=twsrc%5Etfw">Tweets by LiliawasthiLily</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div id='repos'>
+            <h2>my projects</h2>
+        </div>
     </div>
-    <div class="main" id="main_container" hidden="true">
-        <img id="profile_img" height="100" width="100" alt="profile">
-        <p id="bio"></p>
-        <p>Check me on <a id="githublink">Github</a></p>
-        <a class="twitter-timeline" data-width="300" data-height="400"
-            href="https://twitter.com/LiliawasthiLily?ref_src=twsrc%5Etfw">Tweets by LiliawasthiLily</a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    <div id='repos'>
-        <h2>my projects</h2>
-    </div>
+
     <script>
         fetch("https://api.github.com/users/lily01awasthi")
             .then(response => response.json())
@@ -42,8 +46,6 @@
                     var div = document.createElement("div");
                     var name = element['name'];
                     var url = element['svn_url'];
-
-                    // div.innerHTML += "<br>" + name + "<br>" + "<a href='" + url + "'>visit repo</a>";
                     target.appendChild(div);
                     div.innerHTML = `<a href=${url}>${name}</a>`
                     document.getElementById('main_container').hidden = false
