@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Profile</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -13,9 +13,8 @@
     <div class="heading">
         <h2 id="full_name"></h2>
     </div>
-    <div class="main" id="main_container">
+    <div class="main" id="main_container" hidden="true">
         <img id="profile_img" height="100" width="100" alt="profile">
-        <!-- <h2 id="full_name"></h2> -->
         <p id="bio"></p>
         <p>Check me on <a id="githublink">Github</a></p>
         <a class="twitter-timeline" data-width="300" data-height="400"
@@ -26,17 +25,13 @@
         <h2>my projects</h2>
     </div>
     <script>
-        var count = 0;
         fetch("https://api.github.com/users/lily01awasthi")
             .then(response => response.json())
             .then(function (data) {
-                //console.log(data)
                 document.getElementById('profile_img').src = data['avatar_url']
                 document.getElementById('full_name').textContent = data['name']
                 document.getElementById('bio').textContent = data['bio']
                 document.getElementById('githublink').href = data['html_url']
-                document.getElementById('main_container').hidden = false
-                document.getElementById('loading').hidden = true
             })
         fetch("https://api.github.com/users/lily01awasthi/repos")
             .then(response => response.json())
@@ -45,12 +40,14 @@
                     console.log(element['name'])
                     var target = document.getElementById("repos");
                     var div = document.createElement("div");
-                    div.innerHTML += "<br>" + element['name'] + "<br>" + "<a href='" + element['svn_url'] + "'>visit repo here</a>";
-                    // div.innerText = element['name'];
-                    // div.innerHTML.href = element['svn_url'];
-                    // div.href = element['svn_url'];
-                    div.classList.add("div-added");
-                    target.append(div);
+                    var name = element['name'];
+                    var url = element['svn_url'];
+
+                    // div.innerHTML += "<br>" + name + "<br>" + "<a href='" + url + "'>visit repo</a>";
+                    target.appendChild(div);
+                    div.innerHTML = `<a href=${url}>${name}</a>`
+                    document.getElementById('main_container').hidden = false
+                    document.getElementById('loading').hidden = true
                 });
             })
     </script>
